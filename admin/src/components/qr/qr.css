@@ -1,0 +1,432 @@
+.qrpage {
+  width: 85%;
+  height: 100%;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+
+  .qr-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2 {
+      text-align: center;
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-style: normal;
+    }
+  }
+
+  .qr-guide {
+    margin-top: 1rem;
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+
+    h4 {
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: rgb(71, 71, 71);
+    }
+
+    ul {
+      padding: 0.75rem;
+      list-style-type: decimal;
+      width: 100%;
+      color: rgb(71, 71, 71);
+      display: flex;
+      flex-direction: column;
+      row-gap: .5rem;
+
+      li {
+        font-weight: 300;
+      }
+    }
+  }
+
+  .qrs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    justify-content: space-between;
+    background-color: white;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    position: relative;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+
+    .color-picker-btn {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      color: black;
+    }
+
+    .color-picker {
+      position: absolute;
+      top: 4rem;
+      right: 4rem;
+    }
+
+    .download-btn {
+      margin-top: 1rem;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      background-color: rgb(80, 80, 80);
+      color: white;
+      transition: all 0.2s linear;
+    }
+
+    .download-btn:hover {
+      background-color: grey;
+      color: black;
+    }
+
+    .feedo-rect-qr {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .rect-qr {
+        width: 25rem;
+        height: 35rem;
+        border-radius: 1rem;
+        background-color: #fff;
+        border: 1px dashed black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .qr {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          img {
+            width: 13rem;
+            height: 13rem;
+            margin-top: 4rem;
+            padding: 0.5rem;
+            border-radius: 1rem;
+            background-color: white;
+          }
+          h3 {
+            font-family: "Poppins", sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            color: black;
+            margin-top: 1rem;
+               font-size: 1.5rem;
+          }
+
+          p {
+            font-family: "Poppins", sans-serif;
+            font-style: normal;
+            font-weight: 300;
+            color: black;
+            margin-top: auto;
+            margin-bottom: 1rem;
+            strong {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    .feedo-cir-qr {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: auto;
+
+      .cir-qr {
+        width: 25rem;
+        height: 25rem;
+        border-radius: 15rem;
+        border: 1px dashed black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+
+        .qr{
+            width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+            img{
+            width: 10rem;
+            height: 10rem;
+            padding: 0.5rem;
+            background-color: white;
+            border-radius: 1rem;
+            }
+               h3 {
+            font-family: "Poppins", sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.5rem;
+            color: black;
+             margin-top: 1rem;
+          }
+          p {
+            font-family: "Poppins", sans-serif;
+            font-style: normal;
+            font-weight: 300;
+            color: black;
+            strong {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    .normal-qr {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: auto;
+
+      img{
+        width: 12rem;
+        height: 12rem;
+        padding: .5rem;
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 480px){
+  .qrpage{
+    width: 100%;
+    padding: .5rem;
+
+    .qr-header{
+      h2{
+        font-size: 1.2rem;
+      }
+    }
+
+    .qrs{
+      flex-direction: column;
+      row-gap: 3rem;
+      padding: .5rem;
+      padding-bottom: 2rem;
+
+        .feedo-rect-qr {
+      width: 100%;
+      margin-top: 5rem;
+
+      .rect-qr {
+        width: 100%;
+        height: 30rem;
+        border-radius: 1rem;
+
+        .qr {
+
+          img {
+            width: 11rem;
+            height: 11rem;
+            margin-top: 4rem;
+            padding: 0.5rem;
+            border-radius: 1rem;
+            background-color: white;
+          }
+          h3 {
+            color: black;
+            margin-top: 1rem;
+            font-size: 1.5rem;
+          }
+
+          p {
+            font-weight: 300;
+            color: black;
+            margin-top: auto;
+            margin-bottom: 1rem;
+            strong {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    .feedo-cir-qr {
+
+      .cir-qr {
+        width: 18rem;
+        height: 18rem;
+        border-radius: 15rem;
+
+        .qr{
+            img{
+            width: 8rem;
+            height: 8rem;
+            padding: 0.5rem;
+            background-color: white;
+            border-radius: 1rem;
+            }
+               h3 {
+            font-weight: 500;
+            font-size: 1.5rem;
+            color: black;
+             margin-top: 1rem;
+          }
+          p {
+            font-weight: 300;
+            color: black;
+            strong {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    .normal-qr {
+
+      img{
+        width: 12rem;
+        height: 12rem;
+        padding: .5rem;
+      }
+    }
+    }
+   }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px){
+ .qrpage{
+    width: 100%;
+    padding: .5rem;
+
+       .qr-header{
+      h2{
+        font-size: 1.2rem;
+      }
+    }
+
+    .qrs{
+      flex-direction: column;
+      row-gap: 3rem;
+      padding: .5rem;
+      padding-bottom: 2rem;
+
+        .feedo-rect-qr {
+      width: 80%;
+      margin-top: 5rem;
+
+      .rect-qr {
+        width: 100%;
+        height: 35rem;
+
+        .qr {
+
+          img {
+            width: 12rem;
+            height: 12rem;
+            margin-top: 4rem;
+            padding: 0.5rem;
+            border-radius: 1rem;
+          }
+          h3 {
+            font-weight: 500;
+            color: black;
+            margin-top: 1rem;
+               font-size: 1.5rem;
+          }
+
+          p {
+            font-weight: 300;
+            color: black;
+            margin-top: auto;
+            margin-bottom: 1rem;
+            strong {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    .feedo-cir-qr {
+
+      .cir-qr {
+        width: 20rem;
+        height: 20rem;
+        border-radius: 15rem;
+
+        .qr{
+
+            img{
+            width: 8rem;
+            height: 8rem;
+            padding: 0.5rem;
+            background-color: white;
+            border-radius: 1rem;
+            }
+               h3 {
+            font-weight: 500;
+            font-size: 1.5rem;
+            color: black;
+            margin-top: 1rem;
+          }
+          p {
+            font-weight: 300;
+            color: black;
+            strong {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    .normal-qr {
+
+      img{
+        width: 12rem;
+        height: 12rem;
+        padding: .5rem;
+      }
+    }
+    }
+   }
+}
+
+
+@media only screen and (min-width: 769px) and (max-width: 1024px){
+   .qrpage{
+    .qrs{
+      flex-direction: column;
+      row-gap: 3rem;
+    }
+   }
+}

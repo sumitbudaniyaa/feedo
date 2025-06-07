@@ -1,0 +1,197 @@
+.nav {
+  width: 15%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(128, 128, 128, 0.385);
+  padding: 1rem;
+
+
+  ul {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+
+    li {
+      width: 100%;
+      text-align: center;
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+      font-size: 0.9rem;
+      transition: all 0.2s linear;
+      cursor: pointer;
+      white-space: nowrap;
+
+
+      &.selected {
+        background-color: rgba(128, 128, 128, 0.274);
+      }
+    }
+  }
+
+  button {
+    width: 100%;
+    height: 2.5rem;
+    margin-top: auto;
+    border-radius: 0.25rem;
+    background-color: rgba(255, 0, 0, 0.393);
+    color: white;
+    border: none;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.2s linear all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button:hover {
+    background-color: red;
+    color: white;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .nav {
+    display: flex;
+    flex-direction: row;
+    height: 2.5rem;
+    width: 100%;
+    padding: .25rem;
+    overflow-x: scroll;
+    padding-right: 0.25rem;
+    padding-left: .25rem;
+    column-gap: .25rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.385);
+    align-items: center;
+      scroll-behavior: smooth;
+    
+  &::-webkit-scrollbar {
+    height: 0px;
+    background: transparent;
+  }
+
+
+    ul {
+      display: flex;
+      width: auto;
+      flex-direction: row;
+      row-gap: 0;
+      column-gap: 0.5rem;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+
+      li {
+        width: 8rem;
+        text-align: center;
+        padding: 0.25rem;
+        border-radius: 0.25rem;
+        font-size: 0.9rem;
+        transition: all 0.2s linear;
+        cursor: pointer;
+        flex-shrink: 0; 
+        white-space: nowrap;
+
+        &.selected {
+                background-color: rgba(128, 128, 128, 0.274);
+        }
+      }
+    }
+
+    button {
+      width: 6rem;
+      height: 100%;
+      margin-top: 0;
+      font-size: .9rem;
+      flex-shrink: 0; 
+
+    }
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+   .nav {
+    display: flex;
+    flex-direction: row;
+    height: 3rem;
+    width: 100%;
+    padding: 0.5rem;
+    overflow-x: scroll;
+    padding-right: 0.25rem;
+    padding-left: .25rem;
+    column-gap: .25rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.385);
+    align-items: center;
+    justify-content: space-between;
+      scroll-behavior: smooth;
+    
+  &::-webkit-scrollbar {
+    height: 0px;
+    background: transparent;
+  }
+
+
+    ul {
+      display: flex;
+      width: auto;
+      flex-direction: row;
+      row-gap: 0;
+      column-gap: 0.5rem;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+
+      li {
+        width: 8rem;
+        text-align: center;
+        padding: 0.25rem;
+        border-radius: 0.25rem;
+        font-size: 0.9rem;
+        transition: all 0.2s linear;
+        cursor: pointer;
+        flex-shrink: 0; 
+        white-space: nowrap;
+
+        &.selected {
+                background-color: rgba(128, 128, 128, 0.274);
+        }
+      }
+    }
+
+    button {
+      width: 6rem;
+      height: 100%;
+      margin-top: 0;
+      font-size: .9rem;
+      flex-shrink: 0; 
+
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .nav {
+    padding: 0.5rem;
+
+    button {
+      height: 2rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1250px) {
+}

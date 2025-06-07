@@ -1,0 +1,23 @@
+.cat-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 1rem;
+    cursor: pointer;
+
+    p{
+    color: grey;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1rem;
+    flex-shrink: 0;
+    }
+}
+
+.selected{
+  background-color: rgba(128, 128, 128, 0.166);
+    border-radius: 1rem;
+}

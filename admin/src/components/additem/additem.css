@@ -1,0 +1,204 @@
+.additem {
+  width: 100%;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+
+  .additem-inputs {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+
+    input {
+      border-radius: 0.25rem;
+      background-color: rgba(128, 128, 128, 0.166);
+      border: 1px solid rgba(0, 0, 0, 0.275);
+      padding: 0.5rem;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      outline: none;
+    }
+  }
+
+  .additem-btns {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+
+    button {
+      padding: 0.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      border: none;
+      border-radius: 0.25rem;
+      background-color: rgba(0, 128, 0, 0.219);
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-style: normal;
+      cursor: pointer;
+      color: green;
+    }
+
+    .close-btn {
+      cursor: pointer;
+    }
+  }
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 480px){
+  
+  .additem {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  .additem-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    column-gap: 0;
+    row-gap: .5rem;
+    width: 100%;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .additem-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    column-gap: 0;
+    row-gap: 1rem;
+    margin-top: 1rem;
+
+    button {
+      padding: 0.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      border: none;
+      border-radius: 0.25rem;
+      background-color: rgba(0, 128, 0, 0.219);
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-style: normal;
+      cursor: pointer;
+      color: green;
+    }
+
+    .close-btn {
+      cursor: pointer;
+    }
+  }
+}
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px){
+ .additem {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  .additem-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    column-gap: 0;
+    row-gap: .5rem;
+    width: 100%;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .additem-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    column-gap: 0;
+    row-gap: 1rem;
+    margin-top: 1rem;
+
+    button {
+      padding: 0.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      border: none;
+      border-radius: 0.25rem;
+      background-color: rgba(0, 128, 0, 0.219);
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-style: normal;
+      cursor: pointer;
+      color: green;
+    }
+
+    .close-btn {
+      cursor: pointer;
+    }
+  }
+}
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px){
+ .additem {
+  width: 100%;
+  padding: .5rem;
+  display: flex;
+
+  .additem-inputs {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    width: 100%;
+
+    input {
+      width: 30%;
+    }
+  }
+
+  .additem-btns {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+
+
+    button {
+      padding: 0.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      border: none;
+      border-radius: 0.25rem;
+      background-color: rgba(0, 128, 0, 0.219);
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-style: normal;
+      cursor: pointer;
+      color: green;
+    }
+
+    .close-btn {
+      cursor: pointer;
+    }
+  }
+}
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px){
+
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1250px){
+
+}
