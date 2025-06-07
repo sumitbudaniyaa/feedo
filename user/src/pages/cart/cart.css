@@ -108,7 +108,7 @@
     margin-left: -0.5rem;
 
     .paynow {
-      padding: 1rem;
+      padding: .5rem;
       width: 100%;
       border: none;
       background-color: green;
@@ -116,6 +116,7 @@
       font-family: "Poppins", sans-serif;
       font-weight: 600;
       font-style: normal;
+      font-size: 1rem;
     }
   }
 }
