@@ -14,6 +14,8 @@ const MyAcc = () => {
   const [arrdown, setarrdown] = useState(false);
   const [detailedit, setdetailedit] = useState(false);
   const navigate = useNavigate();
+  const [saving,setsaving] = useState(false);
+  const [deleting, setdeleting] = useState(false);
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [address, setAddress] = useState(null);
@@ -31,6 +33,7 @@ const MyAcc = () => {
       toast.error("Value cannot be empty");
     } else {
       try {
+        setsaving(true);
         const res = await axios.post(
           `${
             import.meta.env.VITE_BACKEND_URL
@@ -45,26 +48,32 @@ const MyAcc = () => {
         );
 
         refreshMenu();
+        setsaving(false);
         setdetailedit(false);
       } catch (err) {
         toast.error(err.response?.data?.message);
+        setsaving(false);
       }
     }
   };
 
   const handleDeleteAccount = async() =>{
     try{
+      setdeleting(true);
         const res = await axios.post( `${
             import.meta.env.VITE_BACKEND_URL
           }/api/restaurant/deleteAccount`,{
             restaurantId: restaurant._id
           })
 
+        setdeleting(false);
         localStorage.removeItem('token');
+        refreshMenu();
         navigate('/');
     }
     catch(err){
       toast.error(err.response?.data?.message);
+      setdeleting(false);
     }
   }
 
@@ -82,7 +91,7 @@ const MyAcc = () => {
               handleSave();
             }}
           >
-            Save
+            {saving ? "saving..." : "Save"}
           </button>
         ) : (
           <button onClick={() => setdetailedit(true)}>
@@ -168,7 +177,7 @@ const MyAcc = () => {
           </p>
         </div>
 
-        <button onClick={handleDeleteAccount}>Delete Account</button>
+        <button onClick={handleDeleteAccount}>{deleting? "deleting..." : "Delete Account"}</button>
       </div>
     </div>
   );
