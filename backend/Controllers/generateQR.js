@@ -1,11 +1,11 @@
 const QRcode  = require('qrcode');
 const Restaurant = require('../Models/restaurant');
+require('dotenv').config();
 
 const generateQR = async (id) => {
 
     try{
-      const url = `http://localhost:5174/${id.toString()}`;
-
+      const url = `${process.env.FRONTEND_URL}${id.toString()}`;
 
       const restaurant = await Restaurant.findById(id);
 
