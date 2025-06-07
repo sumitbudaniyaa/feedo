@@ -74,7 +74,8 @@
     column-gap: .25rem;
     border-bottom: 1px solid rgba(128, 128, 128, 0.385);
     align-items: center;
-      scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    overflow-y: none;
     
   &::-webkit-scrollbar {
     height: 0px;
