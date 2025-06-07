@@ -130,6 +130,7 @@
 
           &.edit {
             background-color: rgba(128, 128, 128, 0.166);
+            color: black;
           }
 
           &.save {
