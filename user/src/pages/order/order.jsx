@@ -15,9 +15,13 @@ const Order = () => {
   const [categories, setCategories] = useState(["All"]);
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
+  const [loading,setloading] = useState(false);
+  const [proceeding,setproceeding] = useState(false);
+  const [searchterm,setsearchterm] = useState("");
 
   const fetchMenu = async () => {
     try {
+      setloading(true);
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/user/fetchMenu`,
         {
@@ -27,6 +31,7 @@ const Order = () => {
 
       if (res.status === 404) {
         seterr(res.data.message);
+        setloading(false);
       }
 
       setRestaurant(res.data.isRestaurant);
@@ -37,8 +42,10 @@ const Order = () => {
         ...new Set(menuItems.map((item) => item.itemCategory)),
       ];
       setCategories(uniqueCategories);
+      setloading(false);
     } catch (err) {
       seterr(err.response?.data?.message);
+      setloading(false);
     }
   };
 
@@ -46,12 +53,16 @@ const Order = () => {
     fetchMenu();
   }, []);
 
-  const filteredMenu =
-    selectedCategory === "All"
-      ? restaurant?.menu
-      : restaurant?.menu?.filter(
-          (item) => item.itemCategory === selectedCategory
-        );
+const filteredMenu =
+  selectedCategory === "All"
+    ? restaurant?.menu?.filter((item) =>
+        item.itemName.toLowerCase().includes(searchterm)
+      )
+    : restaurant?.menu?.filter(
+        (item) =>
+          item.itemCategory === selectedCategory &&
+          item.itemName.toLowerCase().includes(searchterm)
+      );
 
   const handleAddToCart = (item, count) => {
     const existingItemIndex = cart.findIndex(
@@ -81,6 +92,7 @@ const Order = () => {
 
   const handleProceed = async () => {
     try {
+      setproceeding(true);
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/user/setCart`,
         {
@@ -89,14 +101,17 @@ const Order = () => {
           cart,
         }
       );
+      setproceeding(true);
       navigate(`/${restaurantId}/${tableNo}/cart`);
     } catch (err) {
       console.log(err.response?.data?.message);
+      setproceeding(true);
     }
   };
 
   return (
     <>
+
       {err ? (
         <div className="error">
           <h4>Error: {err}</h4>
@@ -105,13 +120,13 @@ const Order = () => {
         <div className="order">
           {cart.length > 0 && (
             <div className="go-to-cart" onClick={handleProceed}>
-              <h4>Proceed</h4>
+              <h4>{proceeding? "loading..." : "Proceed"}</h4>
             </div>
           )}
 
           <Header name={restaurant ? restaurant.name : ""} />
 
-          <input type="text" placeholder="Search food" />
+          <input type="text" placeholder="Search food" onChange={(e)=>setsearchterm(e.target.value.toLowerCase())}/>
 
           <div className="category-section">
             <h4>Order by Category</h4>
@@ -122,6 +137,7 @@ const Order = () => {
                   category={cat}
                   isSelected={selectedCategory === cat}
                   onSelect={setSelectedCategory}
+                  loading={loading}
                 />
               ))}
             </div>

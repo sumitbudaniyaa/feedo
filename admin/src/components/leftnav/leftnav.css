@@ -75,7 +75,7 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.385);
     align-items: center;
     scroll-behavior: smooth;
-    overflow-y: none;
+    overflow-y: hidden;
     
   &::-webkit-scrollbar {
     height: 0px;
@@ -92,6 +92,7 @@
       font-family: "Poppins", sans-serif;
       font-weight: 500;
       font-style: normal;
+      overflow-y: hidden;
 
       li {
         width: 8rem;
@@ -136,6 +137,7 @@
     align-items: center;
     justify-content: space-between;
       scroll-behavior: smooth;
+      overflow-y: hidden;
     
   &::-webkit-scrollbar {
     height: 0px;
@@ -152,6 +154,7 @@
       font-family: "Poppins", sans-serif;
       font-weight: 500;
       font-style: normal;
+      overflow-y: hidden;
 
       li {
         width: 8rem;

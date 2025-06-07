@@ -1,19 +1,26 @@
+import { useState } from 'react';
 import './ordercard.css'
 import axios from 'axios'
 
 const OrderCard = ({order, fetchRestaurantDetails}) =>{
 
+    const [loading,setloading] = useState(false);
+
   const orderReady = async(id)=>{
 
     try{
+      setloading(true);
+
      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/kitchen/orderReady`,{
          orderid: id,
      });
 
      fetchRestaurantDetails();
+     setloading(false);
     }
     catch(err){
        console.log(err.response?.data);
+       setloading(false);
     }
   }
 
@@ -29,7 +36,7 @@ const OrderCard = ({order, fetchRestaurantDetails}) =>{
             <span className='instruction-label'>Instructions </span>
             <p>{order.additionalDescription}</p>
 
-            <button onClick={()=>orderReady(order._id)}>Order Ready</button>
+            <button onClick={()=>orderReady(order._id)}>{loading ? "loading..." : "Order Ready"}</button>
 
       </div>
     )

@@ -9,13 +9,15 @@ const Menu = () => {
   const { restaurant, refreshMenu } = useOutletContext();
   const [isedititemId, setisedititemId] = useState(null);
   const [additemopen, setadditemopen] = useState(false);
-
-  const [itemName,setitemName] = useState("");
-  const [itemPrice,setitemPrice] = useState("");
-  const [itemCategory,setitemCategory] = useState("");
+  const [saving, setsaving] = useState(false);
+  const [deleting, setdeleting] = useState(false);
+  const [itemName, setitemName] = useState("");
+  const [itemPrice, setitemPrice] = useState("");
+  const [itemCategory, setitemCategory] = useState("");
 
   const handleDelete = async (id) => {
     try {
+      setdeleting(true);
       const res = await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/api/dashboard/deleteItem`,
         {
@@ -26,30 +28,35 @@ const Menu = () => {
         }
       );
       refreshMenu();
+      setdeleting(false);
     } catch (err) {
       toast.error(err.response?.data?.message);
       console.log(err);
+      setdeleting(false);
     }
   };
 
-  const handleSave = async(id) => {
-    try{
-
-      const res = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/dashboard/editItem`,{
-        restaurantId: restaurant._id,
-        itemId : id,
-        itemName,
-        itemPrice,
-        itemCategory
-      });
+  const handleSave = async (id) => {
+    try {
+      setsaving(true);
+      const res = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/dashboard/editItem`,
+        {
+          restaurantId: restaurant._id,
+          itemId: id,
+          itemName,
+          itemPrice,
+          itemCategory,
+        }
+      );
 
       setisedititemId(null);
       refreshMenu();
-    }
-    catch(err){
+      setsaving(false);
+    } catch (err) {
       toast.error(err.response?.data?.message);
     }
-  }
+  };
 
   if (!restaurant || !restaurant.menu) {
     return (
@@ -92,12 +99,28 @@ const Menu = () => {
                   <h3>
                     {isedititemId === item._id ? (
                       <>
-                      <form onSubmit={handleSave}>
-                        <input type="text" value={itemName} onChange={(e)=>setitemName(e.target.value)}/>
-                        <p>
-                          ₹ <input type="numeric" value={itemPrice} onChange={(e)=>setitemPrice(e.target.value)}/>
-                        </p>
-                        <p>Category: <input type="text" value={itemCategory} onChange={(e)=>setitemCategory(e.target.value)}/></p>
+                        <form onSubmit={handleSave}>
+                          <input
+                            type="text"
+                            value={itemName}
+                            onChange={(e) => setitemName(e.target.value)}
+                          />
+                          <p>
+                            ₹{" "}
+                            <input
+                              type="numeric"
+                              value={itemPrice}
+                              onChange={(e) => setitemPrice(e.target.value)}
+                            />
+                          </p>
+                          <p>
+                            Category:{" "}
+                            <input
+                              type="text"
+                              value={itemCategory}
+                              onChange={(e) => setitemCategory(e.target.value)}
+                            />
+                          </p>
                         </form>
                       </>
                     ) : (
@@ -110,19 +133,20 @@ const Menu = () => {
                   <div className="menucard-btns">
                     {isedititemId === item._id ? (
                       <button
-                      type="submit"
+                        type="submit"
                         className="save"
-                        onClick={()=>handleSave(item._id)}
+                        onClick={() => handleSave(item._id)}
                       >
-                        Save
+                        {saving ? "saving..." : "Save"}
                       </button>
                     ) : (
                       <button
                         className="edit"
-                        onClick={() => {setisedititemId(item._id)
-                            setitemName(item.itemName);
-  setitemPrice(item.itemPrice);
-  setitemCategory(item.itemCategory);
+                        onClick={() => {
+                          setisedititemId(item._id);
+                          setitemName(item.itemName);
+                          setitemPrice(item.itemPrice);
+                          setitemCategory(item.itemCategory);
                         }}
                       >
                         Edit
@@ -132,7 +156,7 @@ const Menu = () => {
                       className="del"
                       onClick={() => handleDelete(item._id)}
                     >
-                      Delete
+                      {deleting ? "deleting..." : "Delete"}
                     </button>
                   </div>
                 </>

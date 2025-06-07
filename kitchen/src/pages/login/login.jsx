@@ -9,7 +9,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const [validPass, setvalidPass] = useState(false);
-
+  const [loading,setloading] = useState(false);
   const [email, setEmail] = useState("");
   const [pin, setPin] = useState("");
 
@@ -35,6 +35,7 @@ const LoginPage = () => {
 
   const handleLogin = async (e) =>{
     e.preventDefault();
+    setloading(true);
 
     try{
       const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/restaurant/login`,{
@@ -46,11 +47,13 @@ const LoginPage = () => {
 
           localStorage.setItem('token', res.data.token);
           toast.success(res.data.message); 
+          setloading(false);
           navigate('/kitchen');
     }
 
     catch(err){
          toast.error(err.response?.data?.message);
+         setloading(false);
     }
   }
 
@@ -80,7 +83,7 @@ const LoginPage = () => {
             {validPass ? "Valid Passcode Length" : "Please enter a 6 digit passcode"}
           </code>
 
-          <button type="submit">Login</button>
+          <button type="submit">{loading ? "loading..." : "Login"}</button>
         </form>
       </div>
     </div>

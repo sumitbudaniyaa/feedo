@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 const LoginPage = () => {
 
   const navigate = useNavigate();
+  const [loading, setloading] = useState(false);
 
   const [validPass, setvalidPass] = useState(false);
 
@@ -35,6 +36,7 @@ const LoginPage = () => {
 
   const handleLogin = async (e) =>{
     e.preventDefault();
+    setloading(true);
 
     try{
       const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/restaurant/login`,{
@@ -45,12 +47,14 @@ const LoginPage = () => {
           setPin("");
 
           localStorage.setItem('token', res.data.token);
-          toast.success(res.data.message); 
+          toast.success(res.data.message);
+          setloading(false); 
           navigate('/dashboard/home');
     }
 
     catch(err){
          toast.error(err.response?.data?.message);
+            setloading(false);
     }
   }
 
@@ -84,7 +88,7 @@ const LoginPage = () => {
             Not a user? Register
           </p>
 
-          <button type="submit">Login</button>
+          <button type="submit">{loading ? "loading..." : "Login"}</button>
         </form>
       </div>
     </div>

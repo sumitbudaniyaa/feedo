@@ -5,16 +5,14 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 const RegisterPage = () => {
-
   const navigate = useNavigate();
+  const [loading, setloading] = useState(false);
 
-  useEffect(()=>{
-      if(localStorage.getItem('token')){
-          navigate('/dashboard/home')
-     }
-  },[navigate])
-
-
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/dashboard/home");
+    }
+  }, [navigate]);
 
   const [validPass, setvalidPass] = useState(false);
 
@@ -49,48 +47,45 @@ const RegisterPage = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setloading(true);
 
     try {
-
-      if(pin.length === 6 && phone.length === 10) {
-
+      if (pin.length === 6 && phone.length === 10) {
         const res = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/restaurant/register`,
-        {
-          name,
-          email,
-          address,
-          phone,
-          pin,
-        }
-      );
+          `${import.meta.env.VITE_BACKEND_URL}/api/restaurant/register`,
+          {
+            name,
+            email,
+            address,
+            phone,
+            pin,
+          }
+        );
 
-      setName("");
-      setEmail("");
-      setAddress("");
-      setPhone("");
-      setPin("");
+        setName("");
+        setEmail("");
+        setAddress("");
+        setPhone("");
+        setPin("");
 
-      toast.success(res.data.message);
-      navigate('/');
+
+        toast.success(res.data.message);
+        setloading(false);
+        navigate("/");
+      } else if (phone.length < 10) {
+        toast.error("Please enter 10 digit phone number");
+      } else if (pin.length < 6) {
+        toast.error("Please set a 6 digit Passcode");
       }
-
-      else if(phone.length < 10){
-        toast.error("Please enter 10 digit phone number")
-      }
-
-      else if(pin.length < 6){
-        toast.error("Please set a 6 digit Passcode")
-      }
-      
     } catch (err) {
       toast.error(err.response?.data?.message);
+         setloading(false);
     }
   };
 
   return (
     <div className="register-page">
-      <ToastContainer theme="dark" autoClose={3000}/>
+      <ToastContainer theme="dark" autoClose={3000} />
       <div className="register-card">
         <h2>feedo.</h2>
         <h4>Enter your details to register</h4>
@@ -133,7 +128,9 @@ const RegisterPage = () => {
             value={pin}
           />
           <code className={validPass ? "valid" : "invalid"}>
-            {validPass ? "Valid Passcode Length" : "Please enter a 6 digit passcode"}
+            {validPass
+              ? "Valid Passcode Length"
+              : "Please enter a 6 digit passcode"}
           </code>
 
           <span>
@@ -145,7 +142,9 @@ const RegisterPage = () => {
             Already a user? LogIn
           </p>
 
-          <button type="submit">Register</button>
+          <button type="submit">
+            {loading ? "loading..." : "Register"}
+          </button>
         </form>
       </div>
     </div>

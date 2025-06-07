@@ -9,6 +9,7 @@ const AddItem = ({ setadditemopen, refreshMenu, restaurant }) => {
   const [itemName, setitemName] = useState("");
   const [itemPrice, setitemPrice] = useState("");
   const [itemCategory, setitemCategory] = useState("");
+  const [adding,setadding] = useState(false);
   
   const restaurantId = restaurant._id;
 
@@ -16,6 +17,7 @@ const AddItem = ({ setadditemopen, refreshMenu, restaurant }) => {
     e.preventDefault();
 
     try {
+      setadding(true);
       const res = await axios.put(
         `${import.meta.env.VITE_BACKEND_URL}/api/dashboard/addItem`,
         {
@@ -31,9 +33,11 @@ const AddItem = ({ setadditemopen, refreshMenu, restaurant }) => {
       setitemCategory("");
 
       refreshMenu();
+      setadding(false);
     } catch (err) {
       toast.error(err.response?.data?.message);
       console.log(err);
+      setadding(false);
     }
   };
 
@@ -66,7 +70,7 @@ const AddItem = ({ setadditemopen, refreshMenu, restaurant }) => {
         </div>
 
         <div className="additem-btns">
-          <button type="submit">Add</button>
+          <button type="submit">{adding? "adding..." : "Add"}</button>
           <X className="close-btn" onClick={() => setadditemopen(false)} />
         </div>
       </div>

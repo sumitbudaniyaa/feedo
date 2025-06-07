@@ -10,6 +10,7 @@ const Cart = () => {
   const [items, setitems] = useState([]);
   const navigate = useNavigate();
   const [additionalDescription, setadditionalDescription] = useState("");
+  const [loading,setloading] = useState(false);
 
   const subTotal = items?.reduce((total, item) => {
     return total + item.itemPrice * item.itemQuantity;
@@ -42,6 +43,7 @@ const Cart = () => {
 
   const handlePlaceOrder = async() =>{
     try{
+      setloading(true);
       const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/user/createOrder`,{
         restaurant: restaurantId, 
         tableNo,
@@ -49,10 +51,12 @@ const Cart = () => {
         additionalDescription
       });
 
-      navigate(`/${restaurantId}/${tableNo}/progress`)
+      setloading(false);
+      navigate(`/${restaurantId}/${tableNo}/progress`);
     }
     catch(err){
        console.log(err.response?.data?.message);
+       setloading(false);
     }
   }
 
@@ -101,7 +105,7 @@ const Cart = () => {
       ></textarea>
 
       <div className="pay-btns">
-        <button className="paynow" onClick={handlePlaceOrder}>Place Order</button>
+        <button className="paynow" onClick={handlePlaceOrder}>{loading ? "loading..." : "Place Order"}</button>
       </div>
     </div>
   );

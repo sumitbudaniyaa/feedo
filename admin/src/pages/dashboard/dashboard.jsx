@@ -14,6 +14,7 @@ const Dashboard = () => {
 
    const fetchMenu = async () => {
       try {
+       
         const res = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/dashboard/menu`,
           {
@@ -24,6 +25,7 @@ const Dashboard = () => {
         );
       
         setRestaurant(res.data.isRestaurant);
+        
       } catch (err) {
         toast.error(err.response?.data?.message);
         localStorage.removeItem('token');

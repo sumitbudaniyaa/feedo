@@ -11,6 +11,7 @@ const Kitchen = () => {
   const [orders, setorders] = useState(null);
   const navigate = useNavigate();
 
+
   const fetchRestaurantDetails = async () => {
     try {
       const res = await axios.get(

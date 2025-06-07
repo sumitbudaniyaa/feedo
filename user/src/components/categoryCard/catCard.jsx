@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './catCard.css'
 
 
-const CatCard = ({category, isSelected, onSelect }) =>{
+const CatCard = ({category, isSelected, onSelect, loading }) =>{
 
 
 
@@ -11,7 +11,7 @@ const CatCard = ({category, isSelected, onSelect }) =>{
 
       
            
-           <p>{category}</p>
+           {loading ? <p>loading...</p> : <p>{category}</p>}
       
 
          </div>
