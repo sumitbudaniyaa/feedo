@@ -50,6 +50,7 @@
       font-style: normal;
       outline: none;
       margin-top: 0.5rem;
+      font-size: 1rem;
     }
 
     
@@ -90,8 +91,8 @@
 
          &.loading{
         pointer-events: none;
-        cursor: not-allowed;
-        opacity: 50;
+        cursor: progress;
+        opacity: 50%;
       }
     }
   }

@@ -154,7 +154,7 @@ const Menu = () => {
                       </button>
                     )}
                     <button
-                      className={deleting ?  "del deleting" : ""}
+                      className={deleting ?  "del deleting" : "del"}
                       onClick={() => handleDelete(item._id)}
                     >
                       {deleting ? "deleting..." : "Delete"}

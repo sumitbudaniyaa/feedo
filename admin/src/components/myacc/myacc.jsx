@@ -92,6 +92,7 @@ const MyAcc = () => {
             onClick={() => {
               handleSave();
             }}
+            className={saving ? "saving" : ""}
           >
             {saving ? "saving..." : "Save"}
           </button>
