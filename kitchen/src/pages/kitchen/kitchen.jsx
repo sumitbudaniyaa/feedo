@@ -26,6 +26,8 @@ const Kitchen = () => {
       setorders(res.data.orders);
     } catch (err) {
       toast.error(err.response?.data?.message);
+      localStorage.removeItem('token');
+      navigate('/')
     }
   };
 
