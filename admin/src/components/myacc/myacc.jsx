@@ -66,10 +66,13 @@ const MyAcc = () => {
             restaurantId: restaurant._id
           })
 
-        setdeleting(false);
+          if(res.status === 200){
+setdeleting(false);
         localStorage.removeItem('token');
         refreshMenu();
         navigate('/');
+          }
+
     }
     catch(err){
       toast.error(err.response?.data?.message);

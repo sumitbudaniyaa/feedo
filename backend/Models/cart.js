@@ -23,6 +23,6 @@ const CartSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-CartSchema.index({ createdAt: 1 }, { expireAfterSeconds: 1200 });
+CartSchema.index({ createdAt: 1 }, { expireAfterSeconds: 600 });
 
 module.exports = new mongoose.model("Cart", CartSchema);
