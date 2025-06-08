@@ -70,8 +70,8 @@ const MyAcc = () => {
       if (res.status === 200) {
         setdeleting(false);
         localStorage.removeItem("token");
-        refreshMenu();
-        navigate("/dashboard/home");
+        navigate("/");
+        toast.success("Account deleted");
       }
     } catch (err) {
       toast.error(err.response?.data?.message);

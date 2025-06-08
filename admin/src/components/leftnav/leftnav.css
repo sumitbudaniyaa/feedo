@@ -93,6 +93,11 @@
       font-weight: 500;
       font-style: normal;
       overflow-y: hidden;
+          
+  &::-webkit-scrollbar {
+    height: 0px;
+    background: transparent;
+  }
 
       li {
         width: 8rem;
@@ -155,6 +160,12 @@
       font-weight: 500;
       font-style: normal;
       overflow-y: hidden;
+
+          
+  &::-webkit-scrollbar {
+    height: 0px;
+    background: transparent;
+  }
 
       li {
         width: 8rem;
