@@ -23,6 +23,11 @@ const Kitchen = () => {
         }
       );
 
+      if(res.status === 401){
+        localStorage.removeItem('token');
+        navigate('/');
+      }
+
       setorders(res.data.orders);
     } catch (err) {
       toast.error(err.response?.data?.message);
