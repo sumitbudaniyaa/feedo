@@ -71,7 +71,7 @@ const MyAcc = () => {
         setdeleting(false);
         localStorage.removeItem("token");
         refreshMenu();
-        navigate("/dashboard");
+        navigate("/dashboard/home");
       }
     } catch (err) {
       toast.error(err.response?.data?.message);
