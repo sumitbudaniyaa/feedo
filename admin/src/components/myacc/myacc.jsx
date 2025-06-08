@@ -7,14 +7,14 @@ import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const MyAcc = () => {
   const { restaurant, refreshMenu } = useOutletContext();
   const [arrdown, setarrdown] = useState(false);
   const [detailedit, setdetailedit] = useState(false);
   const navigate = useNavigate();
-  const [saving,setsaving] = useState(false);
+  const [saving, setsaving] = useState(false);
   const [deleting, setdeleting] = useState(false);
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
@@ -57,28 +57,27 @@ const MyAcc = () => {
     }
   };
 
-  const handleDeleteAccount = async() =>{
-    try{
+  const handleDeleteAccount = async () => {
+    try {
       setdeleting(true);
-        const res = await axios.post( `${
-            import.meta.env.VITE_BACKEND_URL
-          }/api/restaurant/deleteAccount`,{
-            restaurantId: restaurant._id
-          })
+      const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/restaurant/deleteAccount`,
+        {
+          restaurantId: restaurant._id,
+        }
+      );
 
-          if(res.status === 200){
-setdeleting(false);
-        localStorage.removeItem('token');
+      if (res.status === 200) {
+        setdeleting(false);
+        localStorage.removeItem("token");
         refreshMenu();
-        navigate('/');
-          }
-
-    }
-    catch(err){
+        navigate("/dashboard/home");
+      }
+    } catch (err) {
       toast.error(err.response?.data?.message);
       setdeleting(false);
     }
-  }
+  };
 
   return (
     <div className="myacc">
@@ -180,7 +179,9 @@ setdeleting(false);
           </p>
         </div>
 
-        <button onClick={handleDeleteAccount}>{deleting? "deleting..." : "Delete Account"}</button>
+        <button onClick={handleDeleteAccount}>
+          {deleting ? "deleting..." : "Delete Account"}
+        </button>
       </div>
     </div>
   );
