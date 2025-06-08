@@ -70,7 +70,7 @@ const AddItem = ({ setadditemopen, refreshMenu, restaurant }) => {
         </div>
 
         <div className="additem-btns">
-          <button type="submit">{adding? "adding..." : "Add"}</button>
+          <button type="submit" style={adding ? { pointerEvents: 'none', opacity: '0.5', cursor: 'not-allowed' } : {}}>{adding? "adding..." : "Add"}</button>
           <X className="close-btn" onClick={() => setadditemopen(false)} />
         </div>
       </div>

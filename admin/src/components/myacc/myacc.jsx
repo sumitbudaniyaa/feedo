@@ -179,7 +179,7 @@ const MyAcc = () => {
           </p>
         </div>
 
-        <button onClick={handleDeleteAccount}>
+        <button onClick={handleDeleteAccount} style={deleting ? { pointerEvents: 'none', opacity: '0.5', cursor: 'not-allowed' } : {}}>
           {deleting ? "deleting..." : "Delete Account"}
         </button>
       </div>

@@ -73,7 +73,7 @@ const LoginPage = () => {
             value={email}
           />
           <input
-            type="numeric"
+            type="tel"
             placeholder="Passcode"
             required
             onInput={handlePasscode}
@@ -83,7 +83,7 @@ const LoginPage = () => {
             {validPass ? "Valid Passcode Length" : "Please enter a 6 digit passcode"}
           </code>
 
-          <button type="submit">{loading ? "loading..." : "Login"}</button>
+          <button type="submit" style={loading ? { pointerEvents: 'none', opacity: '0.5', cursor: 'not-allowed' } : {}} >{loading ? "loading..." : "Login"}</button>
         </form>
       </div>
     </div>

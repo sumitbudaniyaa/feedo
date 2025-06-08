@@ -121,7 +121,7 @@ const RegisterPage = () => {
           />
           <input
             className="pin"
-            type="numeric"
+            type="tel"
             placeholder="Passcode"
             required
             onInput={handlePasscode}
@@ -142,7 +142,7 @@ const RegisterPage = () => {
             Already a user? LogIn
           </p>
 
-          <button type="submit">
+          <button type="submit" style={loading ? { pointerEvents: 'none', opacity: '0.5', cursor: 'not-allowed' } : {}}>
             {loading ? "loading..." : "Register"}
           </button>
         </form>
