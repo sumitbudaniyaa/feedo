@@ -118,6 +118,12 @@
       font-weight: 600;
       font-style: normal;
       font-size: 1rem;
+
+      &.loading {
+        pointer-events: none;
+        cursor: not-allowed;
+        opacity: 50;
+      }
     }
   }
 }

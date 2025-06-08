@@ -105,7 +105,7 @@ const Cart = () => {
       ></textarea>
 
       <div className="pay-btns">
-        <button className="paynow" onClick={handlePlaceOrder}>{loading ? "loading..." : "Place Order"}</button>
+        <button className={loading ? "paynow loading" : "paynow"} onClick={handlePlaceOrder}>{loading ? "loading..." : "Place Order"}</button>
       </div>
     </div>
   );

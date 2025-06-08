@@ -134,7 +134,7 @@ const Menu = () => {
                     {isedititemId === item._id ? (
                       <button
                         type="submit"
-                        className="save"
+                        className={saving ? "save saving" : "save"}
                         style={saving ? { pointerEvents: 'none', opacity: '0.5', cursor: 'not-allowed' } : {}}
                         onClick={() => handleSave(item._id)}
                       >
@@ -154,8 +154,7 @@ const Menu = () => {
                       </button>
                     )}
                     <button
-                      className="del"
-                      style={deleting ? { pointerEvents: 'none', opacity: '0.5', cursor: 'not-allowed' } : {}}
+                      className={deleting ?  "del deleting" : ""}
                       onClick={() => handleDelete(item._id)}
                     >
                       {deleting ? "deleting..." : "Delete"}

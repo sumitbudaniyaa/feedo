@@ -142,7 +142,7 @@ const RegisterPage = () => {
             Already a user? LogIn
           </p>
 
-          <button type="submit" style={loading ? { pointerEvents: 'none', opacity: '0.5', cursor: 'not-allowed' } : {}}>
+          <button type="submit" className={loading ? "loading" : ""}>
             {loading ? "loading..." : "Register"}
           </button>
         </form>

@@ -44,6 +44,12 @@
       font-style: normal;
       cursor: pointer;
       color: green;
+
+           &.adding{
+        pointer-events: none;
+        cursor: not-allowed;
+        opacity: 50;
+      }
     }
 
     .close-btn {

@@ -1,75 +1,80 @@
-.ordercard{
-    width: 20rem; 
-    height: 25rem;
-    background-color: white;
-    border-radius: .5rem;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-      0 1px 2px -1px rgba(0, 0, 0, 0.1);
-    background-color: rgba(154, 226, 149, 0.173);
+.ordercard {
+  width: 20rem;
+  height: 25rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  background-color: rgba(154, 226, 149, 0.173);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+
+  span {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 0.7rem;
+    color: grey;
+  }
+
+  h2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 3rem;
+  }
+
+  p {
+    color: black;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: .5rem;
+    justify-content: space-between;
 
-    span{
-       font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-style: normal;
-      font-size: .7rem;
-      color: grey;
-    }
-
-    h2{
-       font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-style: normal;
-      font-size: 3rem;
-    }
-
-    p{
-      color: black;
-      width: 100%;
-       font-family: "Poppins", sans-serif;
+    span {
       font-weight: 500;
-      font-style: normal;
+      color: black;
       font-size: 1.2rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
-
-      display: flex;
-      justify-content: space-between;
-
-      span{
-        font-weight: 500;
-        color: black;
-        font-size: 1.2rem;
-      }
     }
+  }
 
-    .instruction-label{
-       width: 100%;
-       color: grey;
-       font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-      font-size: 1.2rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      margin-top: 1rem;
-    }
+  .instruction-label {
+    width: 100%;
+    color: grey;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 1rem;
+  }
 
-    button{
-      margin-top: auto;
-      width: 100%;
-      height: 3rem;
-      color: white;
-      background-color: green;
-      border: none;
-      border-radius: .5rem;
-             font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-style: normal;
-      cursor: pointer;
-      font-size: 1rem;
+  button {
+    margin-top: auto;
+    width: 100%;
+    height: 3rem;
+    color: white;
+    background-color: green;
+    border: none;
+    border-radius: 0.5rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &.loading {
+      pointer-events: none;
+      cursor: not-allowed;
+      opacity: 50;
     }
+  }
 }

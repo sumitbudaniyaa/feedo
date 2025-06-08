@@ -119,7 +119,7 @@ const filteredMenu =
       ) : (
         <div className="order">
           {cart.length > 0 && (
-            <div className="go-to-cart" onClick={handleProceed}>
+            <div className={proceeding ? "go-to-cart loading" : "go-to-cart"} onClick={handleProceed}>
               <h4>{proceeding? "loading..." : "Proceed"}</h4>
             </div>
           )}

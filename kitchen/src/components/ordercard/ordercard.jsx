@@ -36,7 +36,7 @@ const OrderCard = ({order, fetchRestaurantDetails}) =>{
             <span className='instruction-label'>Instructions </span>
             <p>{order.additionalDescription}</p>
 
-            <button onClick={()=>orderReady(order._id)} style={loading ? { pointerEvents: 'none', opacity: '0.5', cursor: 'not-allowed' } : {}}>{loading ? "loading..." : "Order Ready"}</button>
+            <button onClick={()=>orderReady(order._id)} className={loading ? "loading" : ""}>{loading ? "loading..." : "Order Ready"}</button>
 
       </div>
     )

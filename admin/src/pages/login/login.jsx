@@ -88,7 +88,7 @@ const LoginPage = () => {
             Not a user? Register
           </p>
 
-          <button type="submit"style={loading ? { pointerEvents: 'none', opacity: '0.5', cursor: 'not-allowed' } : {}} >{loading ? "loading..." : "Login"}</button>
+          <button type="submit" className={loading ? "loading" : ""}>{loading ? "loading..." : "Login"}</button>
         </form>
       </div>
     </div>
